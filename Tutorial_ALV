@@ -1,21 +1,44 @@
-Adicionando documentação e código ABAP sobre a tabela KNA1
-Uma demanda como se eu tivesse assumendo um caro de programadora ABAP
-Tarefa 1 - Criar um Relatório ALV Simples
-📝 Descrição: A empresa precisa de um relatório ABAP no formato ALV (ABAP List Viewer) para listar clientes com base na tabela KNA1. O relatório deve exibir as seguintes colunas:
-✔️ Código do Cliente (KUNNR)
-✔️ Nome do Cliente (NAME1)
-✔️ Cidade (ORT01)
-✔️ País (LAND1)
-🎯 Requisitos:
-✅ Criar um programa ABAP na transação SE38
-✅ Utilizar SALV Classes para gerar o ALV
-✅ Permitir um filtro opcional para exibir apenas clientes de um determinado país
-📂 Entrega Esperada:
-1️⃣ Código ABAP comentado
-2️⃣ Screenshot da execução no SAP
-3️⃣ Explicação breve do código no README.md
+# Relatório ABAP - Tabela KNA1
 
-CÓDIGO UTILIZADO
+## Objetivo da Demanda
+
+A empresa solicitou a criação de um relatório ABAP simples utilizando o formato ALV (ABAP List Viewer) para listar clientes a partir da tabela KNA1. O relatório deve exibir as seguintes informações sobre os clientes:
+
+- **Código do Cliente** (KUNNR)
+- **Nome do Cliente** (NAME1)
+- **Cidade** (ORT01)
+- **País** (LAND1)
+
+### Requisitos
+
+- Criar um programa ABAP na transação SE38.
+- Utilizar as **SALV Classes** para gerar o ALV.
+- Permitir um filtro opcional para exibir apenas clientes de um determinado país.
+
+## Como Funciona o Código
+
+O código ABAP foi desenvolvido para realizar uma consulta à tabela KNA1, com a possibilidade de filtrar os resultados pelo país. Utilizamos o ALV para apresentar os dados de forma organizada e com recursos de filtragem.
+
+### Passos para Visualizar a Tabela KNA1
+
+1. **Transação SE11 - Dicionário ABAP (Estrutura da Tabela)**
+   - Acesse a transação **SE11** na barra de comandos.
+   - Digite **KNA1** no campo **Nome da Tabela**.
+   - Clique em **Exibir** para visualizar a estrutura da tabela **KNA1**, que contém dados de clientes como:
+     - Número de cliente (KUNNR)
+     - Nome (NAME1)
+     - Endereço (ORT01)
+     - País (LAND1)
+
+2. **Transação SE16 - Visualizar Conteúdo da Tabela**
+   - Acesse a transação **SE16**.
+   - Digite **KNA1** no campo **Nome da Tabela**.
+   - Pressione **Enter** para visualizar o conteúdo da tabela.
+   - Você pode filtrar os dados por campos específicos, como o número do cliente, para obter resultados mais precisos.
+
+## Exemplo de Código ABAP
+
+```abap
 REPORT ZRELATORIO_ALV_CLIENTES.
 
 " Declaração da tabela interna e work area
@@ -53,5 +76,3 @@ TRY.
   CATCH cx_salv_msg INTO DATA(lx_msg).
     MESSAGE lx_msg->get_text( ) TYPE 'E'.
 ENDTRY.
-
-
