@@ -1,63 +1,70 @@
 # SAP-Requests-ABAP
 
-# Request no SAP - Explicação Completa
+# 🚀 Request no SAP - Guia Completo
 
-## O que é um Request no SAP?
-No SAP, um **request (ou ordem de transporte)** é um mecanismo utilizado para gerenciar alterações feitas no sistema e garantir que sejam movidas de um ambiente para outro (por exemplo, de desenvolvimento para qualidade e produção).
-
-Esses requests são armazenados no sistema de gerenciamento de transporte do SAP (**Transport Management System - TMS**), garantindo que todas as modificações sejam controladas e documentadas corretamente.
+## 📌 Sobre o Projeto
+Este repositório contém uma explicação detalhada sobre o conceito de **Request no SAP**, sua importância e como utilizá-lo corretamente dentro do sistema. Ele serve como um guia para iniciantes que desejam entender como funciona o gerenciamento de transporte no SAP.
 
 ---
 
-## Tipos de Requests no SAP
-Existem dois tipos principais de requests no SAP:
+## 📖 O que é um Request no SAP?
+No SAP, um **Request** (ou **Ordem de Transporte**) é um mecanismo usado para gerenciar mudanças feitas no sistema e transportá-las entre diferentes ambientes (ex: Desenvolvimento → Qualidade → Produção). 
 
-### 1. **Workbench Request (Tipo: Workbench - "W")**
-- Utilizado para objetos independentes de cliente (**cross-client**), como programas ABAP, tabelas, classes e configurações técnicas.
-- Quando um objeto está associado a um Workbench Request, ele pode ser transportado para outros sistemas.
-
-### 2. **Customizing Request (Tipo: Customizing - "C")**
-- Usado para configurações específicas de um cliente (**client-dependent**), como parâmetros de configuração de módulos do SAP.
-- Contém apenas entradas em tabelas de Customizing.
-
-**Outros tipos incluem:**
-- **Transporte de código ABAP (TASK dentro de uma Workbench Request).**
-- **Requests manuais para movimentação de dados específicos (por exemplo, configurações específicas de um cliente).**
+Os requests garantem que todas as modificações sejam controladas e documentadas corretamente através do **Transport Management System (TMS)**.
 
 ---
 
-## Como Criar um Request no SAP?
-1. Acesse a transação **SE09** (para objetos Workbench) ou **SE10** (para Customizing).
-2. Clique em **Criar Request** (F6).
+## 🔹 Tipos de Requests no SAP
+
+### 1️⃣ Workbench Request (**W**)
+✔️ Utilizado para objetos **independentes de cliente** (*cross-client*), como:
+- Programas ABAP
+- Tabelas
+- Classes
+- Configurações técnicas
+
+### 2️⃣ Customizing Request (**C**)
+✔️ Usado para configurações **dependentes de cliente** (*client-dependent*), como:
+- Parâmetros de configuração de módulos do SAP
+- Ajustes específicos de um cliente
+
+📌 Outros tipos incluem transporte de código ABAP, requests manuais e ajustes específicos de um ambiente.
+
+---
+
+## ⚙️ Como Criar um Request no SAP?
+1. Acesse a transação **SE09** (Workbench) ou **SE10** (Customizing).
+2. Clique em **Criar Request (F6)**.
 3. Escolha o tipo de Request (**Workbench** ou **Customizing**).
-4. Informe uma descrição clara da alteração realizada.
-5. Associe objetos ao request (por exemplo, um programa ABAP, uma tabela, ou configurações de Customizing).
+4. Adicione uma descrição clara da mudança.
+5. Associe os objetos necessários (ex: programas ABAP, tabelas, configurações).
 6. Salve e libere a ordem quando estiver pronta para transporte (**SE10 > Liberar**).
 
 ---
 
-## Como Funciona o Transporte no SAP?
-O processo de transporte segue estas etapas:
-1. **Criação do Request** → As alterações são agrupadas em um request.
-2. **Aprovação** → Um desenvolvedor ou consultor responsável revisa e libera o request.
-3. **Exportação** → O request é exportado do ambiente de desenvolvimento.
-4. **Importação** → O request é importado para o ambiente de qualidade e, posteriormente, para produção.
+## 🔄 Como Funciona o Transporte no SAP?
+1️⃣ **Criação do Request** → As mudanças são agrupadas.
+2️⃣ **Aprovação** → O desenvolvedor ou consultor revisa e libera.
+3️⃣ **Exportação** → O request é enviado do ambiente de desenvolvimento.
+4️⃣ **Importação** → O request é transportado para qualidade e produção.
 
-Os administradores do SAP gerenciam esse transporte utilizando a transação **STMS** (**Transport Management System**).
-
----
-
-## Conclusão
-O sistema de requests no SAP é essencial para garantir um fluxo de trabalho organizado e seguro dentro do ambiente de desenvolvimento. Ele permite que mudanças sejam documentadas, revisadas e transportadas de maneira eficiente entre os sistemas SAP.
-
-Se você está iniciando no mundo SAP, dominar o conceito de requests e transporte é fundamental para o desenvolvimento e configuração dentro do sistema.
+Os administradores do SAP gerenciam esses transportes através da transação **STMS**.
 
 ---
 
-### 🔗 Recursos Adicionais
-- [SAP Help - Change and Transport System](https://help.sap.com)
-- [Transações SAP: SE09, SE10, STMS]
-- [Curso OpenSAP sobre Desenvolvimento ABAP]
+## 📚 Recursos Adicionais
+📌 [SAP Help - Change and Transport System](https://help.sap.com)  
+📌 [Transações SAP: SE09, SE10, STMS]  
+📌 [Curso OpenSAP sobre Desenvolvimento ABAP](https://open.sap.com/)  
 
-Se precisar de mais informações, entre em contato! 🚀
+---
 
+## 🤝 Contribuições
+Sinta-se à vontade para contribuir com este repositório! Se tiver dúvidas ou sugestões, abra uma **Issue** ou envie um **Pull Request**. 🚀
+
+---
+
+## 📝 Licença
+Este projeto está sob a licença MIT - veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+
+💡 **Criado para ajudar desenvolvedores SAP a entender Requests e Transportes.**
