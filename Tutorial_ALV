@@ -1,0 +1,57 @@
+Adicionando documentação e código ABAP sobre a tabela KNA1
+Uma demanda como se eu tivesse assumendo um caro de programadora ABAP
+Tarefa 1 - Criar um Relatório ALV Simples
+📝 Descrição: A empresa precisa de um relatório ABAP no formato ALV (ABAP List Viewer) para listar clientes com base na tabela KNA1. O relatório deve exibir as seguintes colunas:
+✔️ Código do Cliente (KUNNR)
+✔️ Nome do Cliente (NAME1)
+✔️ Cidade (ORT01)
+✔️ País (LAND1)
+🎯 Requisitos:
+✅ Criar um programa ABAP na transação SE38
+✅ Utilizar SALV Classes para gerar o ALV
+✅ Permitir um filtro opcional para exibir apenas clientes de um determinado país
+📂 Entrega Esperada:
+1️⃣ Código ABAP comentado
+2️⃣ Screenshot da execução no SAP
+3️⃣ Explicação breve do código no README.md
+
+CÓDIGO UTILIZADO
+REPORT ZRELATORIO_ALV_CLIENTES.
+
+" Declaração da tabela interna e work area
+DATA: lt_clientes TYPE TABLE OF kna1,  " Tabela interna para armazenar clientes
+      wa_cliente  TYPE kna1.           " Work area para processar os dados
+
+" Parâmetro para filtro de país
+PARAMETERS: p_pais TYPE land1.
+
+" Buscar dados da tabela KNA1 aplicando o filtro de país
+SELECT kunnr, name1, ort01, land1
+  FROM kna1
+  WHERE land1 = @p_pais
+  INTO TABLE @lt_clientes.
+
+" Verificar se há dados retornados
+IF lt_clientes IS INITIAL.
+  MESSAGE 'Nenhum cliente encontrado para este país.' TYPE 'I'.
+  RETURN.
+ENDIF.
+
+" Criar ALV com SALV Classes
+DATA: o_alv TYPE REF TO cl_salv_table.
+
+TRY.
+    " Criar objeto ALV com os dados carregados
+    cl_salv_table=>factory(
+      IMPORTING r_salv_table = o_alv
+      CHANGING  t_table      = lt_clientes
+    ).
+
+    " Exibir ALV na tela
+    o_alv->display( ).
+
+  CATCH cx_salv_msg INTO DATA(lx_msg).
+    MESSAGE lx_msg->get_text( ) TYPE 'E'.
+ENDTRY.
+
+
